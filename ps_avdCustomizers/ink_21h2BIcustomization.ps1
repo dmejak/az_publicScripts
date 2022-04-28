@@ -46,11 +46,19 @@ choco feature disable -n allowGlobalConfirmation
 #############################################################################################################################################
 #
 #
-# Copy Software zip from AVDRepo
+# Install r7insightagent from AVDRepo
 
 azcopy copy 'https://inkuscestcorpapprepo001.blob.core.windows.net/r7insightagents/*?sp=rl&st=2022-01-05T17:18:17Z&se=2023-02-02T01:18:17Z&spr=https&sv=2020-08-04&sr=c&sig=BmBc1J7P1VD0slTFZYkeZCJTdoEupzQEPCzsRytTL6g%3D' c:\temp
 #Install r7InsightAgent
 Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', 'c:\temp\agentInstaller-x86_64.msi', '/quiet', '/qn'
+
+
+# Install teamviewer from AVDRepo
+
+azcopy copy 'https://inkuscestcorpapprepo001.blob.core.windows.net/ink-teamviewer/*?sp=rl&st=2022-04-28T18:49:52Z&se=2023-05-02T02:49:52Z&spr=https&sv=2020-08-04&sr=c&sig=tTIBgtdfgxcNS8d5wOpyBMnYxiybJKXhGsK0SQS%2FEK0%3D' c:\temp
+#Install teamviewer
+Start-Process -Wait -FilePath 'c:\temp\TeamViewer_Host_Setup.exe' -ArgumentList '/S', '/norestart' -PassThru
+
 
 #############################################################################################################################################
 
