@@ -40,7 +40,7 @@ choco install fslogix
 
 Start-Sleep -Seconds 5
 
-choco install powerbi
+choco install powerbi --ignore-checksums
 
 choco feature disable -n allowGlobalConfirmation
 #############################################################################################################################################
@@ -58,6 +58,14 @@ Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', 
 azcopy copy 'https://inkuscestcorpapprepo001.blob.core.windows.net/ink-teamviewer/*?sp=rl&st=2022-04-28T18:49:52Z&se=2023-05-02T02:49:52Z&spr=https&sv=2020-08-04&sr=c&sig=tTIBgtdfgxcNS8d5wOpyBMnYxiybJKXhGsK0SQS%2FEK0%3D' c:\temp
 #Install teamviewer
 Start-Process -Wait -FilePath 'c:\temp\TeamViewer_Host_Setup.exe' -ArgumentList '/S', '/norestart' -PassThru
+
+#Install SalesForce DataLoader
+
+azcopy copy 'https://inkuscestcorpapprepo001.blob.core.windows.net/salesforce-dataloader/*?sp=rl&st=2022-04-29T19:16:15Z&se=2023-05-02T03:16:15Z&spr=https&sv=2020-08-04&sr=c&sig=5CbzCgYolxcCM7ONEE7BD21SeSLF7kJSmHrSNG2O30Q%3D' c:\temp
+
+Expand-Archive c:\temp\dataloader_win.zip -DestinationPath c:\temp
+
+Start-Process -FilePath "C:\temp\dataloader_win\install.bat" -Wait -NoNewWindow
 
 
 #############################################################################################################################################
