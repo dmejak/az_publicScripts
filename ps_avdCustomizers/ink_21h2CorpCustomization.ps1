@@ -42,6 +42,10 @@ Start-Sleep -Seconds 5
 
 choco install powerbi --ignore-checksums
 
+Start-Sleep -Seconds 5
+
+choco install openjdk
+
 choco feature disable -n allowGlobalConfirmation
 #############################################################################################################################################
 #
